@@ -27,5 +27,4 @@ public class Comment : IEntity
     public DateTime? ReadCreated { get; set; }
     public Language Language { get; set; }
     public ModulCategory ModulCategory { get; set; }
-
 }
