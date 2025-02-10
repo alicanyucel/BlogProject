@@ -1,6 +1,7 @@
 ﻿
 
 using BlogProject.Domain.Abstract;
+using EntityLayer.Concrete;
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;

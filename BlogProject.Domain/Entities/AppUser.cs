@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.AspNetCore.Identity;
+
 namespace BlogProject.Domain;
 public class AppUser : IdentityUser<int>
 {

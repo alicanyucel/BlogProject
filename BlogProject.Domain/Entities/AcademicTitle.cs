@@ -1,9 +1,7 @@
 ﻿using BlogProject.Domain.Abstract;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace BlogProject.Domain;
-
 public class AcademicTitle: IEntity
 {
     [Key]
@@ -21,10 +19,4 @@ public class AcademicTitle: IEntity
     public DateTime? Modified { get; set; }
     public List<Doctor> Doctors { get; set; }
     public Language Language { get; set; }
-
-    //DBCC CHECKIDENT('[TestTable]', RESEED, 0);
-    //GO
-
-    //SELECT * INTO CommentsBackup FROM Comments
-
 }
