@@ -20,7 +20,7 @@ public static class DependencyInjection
             conf.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
 
-        object value = services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         return services;
 
