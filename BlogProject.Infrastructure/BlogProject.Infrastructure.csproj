@@ -27,4 +27,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlogProject.Domain\BlogProject.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
