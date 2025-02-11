@@ -1,5 +1,6 @@
 ﻿using BlogProject.Domain;
 using BlogProject.Infrastructure.DataContext;
+using BlogProject.Infrastructure.Options;
 using GenericRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

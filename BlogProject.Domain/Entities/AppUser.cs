@@ -8,6 +8,7 @@ public class AppUser : IdentityUser<int>
     public int? LanguageId { get; set; }
     public string FirstName { get; set; }
     public string Surname { get; set; }
+    public string FullName => string.Join(" ", FirstName, Surname);
     public string Districht { get; set; }
     public string City { get; set; }
     public string ImageName { get; set; }
