@@ -25,10 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\BlogProject.Application\BlogProject.Application.csproj" />
     <ProjectReference Include="..\BlogProject.Domain\BlogProject.Domain.csproj" />
   </ItemGroup>
 

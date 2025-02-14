@@ -1,4 +1,5 @@
 ﻿
+using BlogProject.Application.Services;
 using BlogProject.Domain;
 using BlogProject.Infrastructure.Options;
 using Microsoft.AspNetCore.Identity;
@@ -11,15 +12,15 @@ using System.Text;
 namespace BlogProject.Infrastructure.Services;
 
 internal class JwtProvider(
-         UserManager<AppUser> userManager,
-         IOptions<JwtOptions> jwtOptions) : IJwtProvider
+        UserManager<AppUser> userManager,
+        IOptions<JwtOptions> jwtOptions) : IJwtProvider
 {
     public async Task<LoginCommandResponse> CreateToken(AppUser user)
     {
         List<Claim> claims = new()
             {
                 new Claim("Id", user.Id.ToString()),
-                new Claim("Name", user.FirstName),
+                new Claim("Name", user.FullName),
                 new Claim("Email", user.Email ?? ""),
                 new Claim("UserName", user.UserName ?? "")
             };
@@ -50,5 +51,10 @@ internal class JwtProvider(
         await userManager.UpdateAsync(user);
 
         return new(token, refreshToken, refreshTokenExpires);
+    }
+
+    Task<LoginCommandResponse> IJwtProvider.CreateToken(AppUser user)
+    {
+        throw new NotImplementedException();
     }
 }
