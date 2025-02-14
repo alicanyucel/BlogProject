@@ -4,7 +4,8 @@ using BlogProject.Domain.Abstract;
 
 namespace BlogProject.DomaiN;
 public class Speciality :Entity, IEntity
-{
+{ // ilşkili tabolara tekrar id değerini yazmaya gerek basedeb gelecek 
+	// birde configurasyon yazılacakç..
 	public int RowNumber { get; set; }
 	public string? Name { get; set; }
 	public string? Title { get; set; }
