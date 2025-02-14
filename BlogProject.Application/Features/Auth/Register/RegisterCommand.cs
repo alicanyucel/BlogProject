@@ -9,6 +9,8 @@ namespace BlogProject.Application.Features.Auth.Register
      string Email,
      string UserName,
      string Password,
-     string PhoneNumber
+     string PhoneNumber,
+     Guid RefreshToken,
+     DateTime RefreshTokenExpires
     ) : IRequest<Unit>;
 }

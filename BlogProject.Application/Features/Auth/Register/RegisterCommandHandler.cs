@@ -32,9 +32,11 @@ namespace BlogProject.Application.Features.Auth.Register
             AppUser appUser = new()
             {
                 Id = Guid.NewGuid(),
-                FirstName=request.FirstName,
-                LastName=request.Lastname,
+                FirstName = request.FirstName,
+                LastName = request.Lastname,
                 Email = request.Email,
+                RefreshToken = request.RefreshToken.ToString(),
+                RefreshTokenExpires = request.RefreshTokenExpires,
                 UserName = request.UserName,
                 PasswordHash = request.Password,
                 PhoneNumber = request.PhoneNumber,
