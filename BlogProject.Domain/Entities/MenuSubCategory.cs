@@ -1,19 +1,20 @@
-﻿using BlogProject.Domain.Abstract;
+﻿
+
+using BlogProject.Domain.Abstract;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlogProject.DomaiN;
-public class Slider : IEntity
+namespace BlogProject.Domain;
+public class MenuSubCategory : IEntity
 {
 	[Key]
-	public int SliderId { get; set; }
-	public int LanguageId { get; set; }
+	public int MenuSubCategoryId { get; set; }
+	public int MenuCategoryId { get; set; }
 	public int RowNumber { get; set; }
 	public string? Name { get; set; }
 	public string? Title { get; set; }
 	public string? Description { get; set; }
 	public bool Status { get; set; }
 	public string? ImageName { get; set; }
-	public string? ImageNameMobile { get; set; }
 	public int ClickCount { get; set; }
 	public bool NoIndex { get; set; }
 	public bool IsLink { get; set; }
@@ -26,4 +27,5 @@ public class Slider : IEntity
 	public DateTime? Created { get; set; }
 	public string? ModifiedBy { get; set; }
 	public DateTime? Modified { get; set; }
+	public MenuCategory MenuCategory { get; set; }
 }

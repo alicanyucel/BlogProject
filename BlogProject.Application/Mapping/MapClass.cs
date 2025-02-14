@@ -3,6 +3,7 @@
 using AutoMapper;
 using BlogProject.Application.Features.Slider.AddSlider;
 using BlogProject.Application.Features.Slider.UpdateSlider;
+using BlogProject.DomaiN;
 
 namespace BlogProject.Application.Mapping
 {

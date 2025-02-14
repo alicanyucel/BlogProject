@@ -4,6 +4,7 @@ using GenericRepository;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using BlogProject.DomaiN;
 
 namespace BlogProject.Infrastructure.DataContext;
 
