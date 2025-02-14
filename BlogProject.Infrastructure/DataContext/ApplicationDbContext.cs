@@ -10,7 +10,7 @@ namespace BlogProject.Infrastructure.DataContext;
 public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>, IUnitOfWork
 {
     public ApplicationDbContext(DbContextOptions options) : base(options) { }
-    
+    DbSet<Slider> Sliders { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
