@@ -10,9 +10,9 @@ namespace BlogProject.Application.Features.Auth.Register
             RuleFor(p => p.UserName).NotEmpty().WithMessage("Kullanıcı adı boş olamaz");
             RuleFor(p => p.UserName).NotNull().WithMessage("Kullanıcı adı boş olamaz");
             RuleFor(p => p.UserName).MinimumLength(3).WithMessage("Kullanıcı en az 3 karakter olmalıdır");
-            RuleFor(p => p.Name).NotEmpty().WithMessage("Ad alanı boş olamaz");
-            RuleFor(p => p.Name).NotNull().WithMessage("Ad alanı boş olamaz");
-            RuleFor(p => p.Name).MinimumLength(3).WithMessage("Ad alanı en az 3 karakter olmalıdır");
+            RuleFor(p => p.FirstName).NotEmpty().WithMessage("Ad alanı boş olamaz");
+            RuleFor(p => p.FirstName).NotNull().WithMessage("Ad alanı boş olamaz");
+            RuleFor(p => p.FirstName).MinimumLength(3).WithMessage("Ad alanı en az 3 karakter olmalıdır");
             RuleFor(p => p.Lastname).NotEmpty().WithMessage("Soyad alanı boş olamaz");
             RuleFor(p => p.Lastname).NotNull().WithMessage("Soyad alanı boş olamaz");
             RuleFor(p => p.Lastname).MinimumLength(3).WithMessage("Soyad alanı en az 3 karakter olmalıdır");
