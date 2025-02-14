@@ -80,7 +80,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("BlogCategories");
+                    b.ToTable("BlogCategory");
                 });
 
             modelBuilder.Entity("BlogProject.Domai.DoctorTreatment", b =>
@@ -572,7 +572,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("SpecialityId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Blog");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.BlogGallery", b =>
@@ -602,7 +602,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BlogGalleries");
+                    b.ToTable("BlogGallery");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.BlogVideo", b =>
@@ -701,7 +701,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("SpecialityId");
 
-                    b.ToTable("BlogVideos");
+                    b.ToTable("BlogVideo");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.City", b =>

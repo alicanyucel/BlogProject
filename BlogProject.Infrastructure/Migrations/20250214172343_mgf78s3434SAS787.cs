@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlogProject.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class mgf78s3434 : Migration
+    public partial class mgf78s3434SAS787 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -146,7 +146,7 @@ namespace BlogProject.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlogCategories",
+                name: "BlogCategory",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -169,9 +169,9 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogCategories", x => x.Id);
+                    table.PrimaryKey("PK_BlogCategory", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogCategories_Languages_LanguageId",
+                        name: "FK_BlogCategory_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
@@ -961,7 +961,7 @@ namespace BlogProject.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Blogs",
+                name: "Blog",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -997,48 +997,48 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blogs", x => x.Id);
+                    table.PrimaryKey("PK_Blog", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Blogs_BlogCategories_BlogCategoryId",
+                        name: "FK_Blog_BlogCategory_BlogCategoryId",
                         column: x => x.BlogCategoryId,
-                        principalTable: "BlogCategories",
+                        principalTable: "BlogCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blogs_BlogCategories_BlogCategoryId1",
+                        name: "FK_Blog_BlogCategory_BlogCategoryId1",
                         column: x => x.BlogCategoryId1,
-                        principalTable: "BlogCategories",
+                        principalTable: "BlogCategory",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Blogs_Departments_DepartmentId",
+                        name: "FK_Blog_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blogs_Departments_DepartmentId1",
+                        name: "FK_Blog_Departments_DepartmentId1",
                         column: x => x.DepartmentId1,
                         principalTable: "Departments",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Blogs_Languages_LanguageId",
+                        name: "FK_Blog_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blogs_Languages_LanguageId1",
+                        name: "FK_Blog_Languages_LanguageId1",
                         column: x => x.LanguageId1,
                         principalTable: "Languages",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Blogs_Specializations_SpecialityId",
+                        name: "FK_Blog_Specializations_SpecialityId",
                         column: x => x.SpecialityId,
                         principalTable: "Specializations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blogs_Users_AppUserId",
+                        name: "FK_Blog_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -1046,7 +1046,7 @@ namespace BlogProject.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlogVideos",
+                name: "BlogVideo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -1079,33 +1079,33 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogVideos", x => x.Id);
+                    table.PrimaryKey("PK_BlogVideo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_BlogCategories_BlogCategoryId",
+                        name: "FK_BlogVideo_BlogCategory_BlogCategoryId",
                         column: x => x.BlogCategoryId,
-                        principalTable: "BlogCategories",
+                        principalTable: "BlogCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_Departments_DepartmentId",
+                        name: "FK_BlogVideo_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_Languages_LanguageId",
+                        name: "FK_BlogVideo_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_Specializations_SpecialityId",
+                        name: "FK_BlogVideo_Specializations_SpecialityId",
                         column: x => x.SpecialityId,
                         principalTable: "Specializations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_Users_AppUserId",
+                        name: "FK_BlogVideo_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -1347,7 +1347,7 @@ namespace BlogProject.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlogGalleries",
+                name: "BlogGallery",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -1360,11 +1360,11 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlogGalleries", x => x.Id);
+                    table.PrimaryKey("PK_BlogGallery", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogGalleries_Blogs_Id",
+                        name: "FK_BlogGallery_Blog_Id",
                         column: x => x.Id,
-                        principalTable: "Blogs",
+                        principalTable: "Blog",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1519,73 +1519,73 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogCategories_LanguageId",
-                table: "BlogCategories",
-                column: "LanguageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Blogs_AppUserId",
-                table: "Blogs",
+                name: "IX_Blog_AppUserId",
+                table: "Blog",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_BlogCategoryId",
-                table: "Blogs",
+                name: "IX_Blog_BlogCategoryId",
+                table: "Blog",
                 column: "BlogCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_BlogCategoryId1",
-                table: "Blogs",
+                name: "IX_Blog_BlogCategoryId1",
+                table: "Blog",
                 column: "BlogCategoryId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_DepartmentId",
-                table: "Blogs",
+                name: "IX_Blog_DepartmentId",
+                table: "Blog",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_DepartmentId1",
-                table: "Blogs",
+                name: "IX_Blog_DepartmentId1",
+                table: "Blog",
                 column: "DepartmentId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_LanguageId",
-                table: "Blogs",
+                name: "IX_Blog_LanguageId",
+                table: "Blog",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_LanguageId1",
-                table: "Blogs",
+                name: "IX_Blog_LanguageId1",
+                table: "Blog",
                 column: "LanguageId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_SpecialityId",
-                table: "Blogs",
+                name: "IX_Blog_SpecialityId",
+                table: "Blog",
                 column: "SpecialityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogVideos_AppUserId",
-                table: "BlogVideos",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlogVideos_BlogCategoryId",
-                table: "BlogVideos",
-                column: "BlogCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlogVideos_DepartmentId",
-                table: "BlogVideos",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlogVideos_LanguageId",
-                table: "BlogVideos",
+                name: "IX_BlogCategory_LanguageId",
+                table: "BlogCategory",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogVideos_SpecialityId",
-                table: "BlogVideos",
+                name: "IX_BlogVideo_AppUserId",
+                table: "BlogVideo",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogVideo_BlogCategoryId",
+                table: "BlogVideo",
+                column: "BlogCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogVideo_DepartmentId",
+                table: "BlogVideo",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogVideo_LanguageId",
+                table: "BlogVideo",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogVideo_SpecialityId",
+                table: "BlogVideo",
                 column: "SpecialityId");
 
             migrationBuilder.CreateIndex(
@@ -1943,10 +1943,10 @@ namespace BlogProject.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BlogGalleries");
+                name: "BlogGallery");
 
             migrationBuilder.DropTable(
-                name: "BlogVideos");
+                name: "BlogVideo");
 
             migrationBuilder.DropTable(
                 name: "Comments");
@@ -1997,7 +1997,7 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "TechnologicalDevicesDepartment");
 
             migrationBuilder.DropTable(
-                name: "Blogs");
+                name: "Blog");
 
             migrationBuilder.DropTable(
                 name: "ContactFormsSubjects");
@@ -2018,7 +2018,7 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "TechnologicalDevices");
 
             migrationBuilder.DropTable(
-                name: "BlogCategories");
+                name: "BlogCategory");
 
             migrationBuilder.DropTable(
                 name: "AcademicTitle");

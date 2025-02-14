@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogProject.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250214171740_mgf78s3434")]
-    partial class mgf78s3434
+    [Migration("20250214172343_mgf78s3434SAS787")]
+    partial class mgf78s3434SAS787
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,7 +83,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("BlogCategories");
+                    b.ToTable("BlogCategory");
                 });
 
             modelBuilder.Entity("BlogProject.Domai.DoctorTreatment", b =>
@@ -575,7 +575,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("SpecialityId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Blog");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.BlogGallery", b =>
@@ -605,7 +605,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BlogGalleries");
+                    b.ToTable("BlogGallery");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.BlogVideo", b =>
@@ -704,7 +704,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("SpecialityId");
 
-                    b.ToTable("BlogVideos");
+                    b.ToTable("BlogVideo");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.City", b =>
