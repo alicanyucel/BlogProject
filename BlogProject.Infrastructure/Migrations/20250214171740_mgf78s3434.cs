@@ -6,19 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlogProject.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class mg52s23722232 : Migration
+    public partial class mgf78s3434 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<Guid>(
-                name: "LanguageId",
-                table: "Sliders",
-                type: "uniqueidentifier",
-                nullable: true);
-
             migrationBuilder.CreateTable(
-                name: "Language",
+                name: "Languages",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -35,11 +29,11 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Language", x => x.Id);
+                    table.PrimaryKey("PK_Languages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Modul",
+                name: "Moduls",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -56,11 +50,25 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Modul", x => x.Id);
+                    table.PrimaryKey("PK_Moduls", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SpokenLanguage",
+                name: "Roles",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SpokenLanguages",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -77,7 +85,36 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SpokenLanguage", x => x.Id);
+                    table.PrimaryKey("PK_SpokenLanguages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpires = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -101,9 +138,9 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_AcademicTitle", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AcademicTitle_Language_LanguageId",
+                        name: "FK_AcademicTitle_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -134,9 +171,9 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_BlogCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogCategories_Language_LanguageId",
+                        name: "FK_BlogCategories_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -162,9 +199,9 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_ContactFormsSubjects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContactFormsSubjects_Language_LanguageId",
+                        name: "FK_ContactFormsSubjects_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -205,9 +242,9 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Contacts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Contacts_Language_LanguageId",
+                        name: "FK_Contacts_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -235,9 +272,9 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Countries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Countries_Language_LanguageId",
+                        name: "FK_Countries_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -270,9 +307,9 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Departments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Departments_Language_LanguageId",
+                        name: "FK_Departments_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -298,15 +335,15 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Footers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Footers_Language_LanguageId",
+                        name: "FK_Footers_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Gender",
+                name: "Genders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -324,17 +361,17 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gender", x => x.Id);
+                    table.PrimaryKey("PK_Genders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Gender_Language_LanguageId",
+                        name: "FK_Genders_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuCategory",
+                name: "MenuCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -360,17 +397,97 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuCategory", x => x.Id);
+                    table.PrimaryKey("PK_MenuCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MenuCategory_Language_LanguageId",
+                        name: "FK_MenuCategories_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TreatmentCategory",
+                name: "SeoSettings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SiteUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    SeoTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoKeyword = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MetaTag = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GoogleAnalyticscode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GoogleVerificationCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BingVerificationCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    YandexVerificationCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    YandexMetrica = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StructuredDataTool = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WhatsAppSupport = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LiveSupport = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddThis = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode5 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode6 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode7 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VerificationCode8 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SeoSettings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SeoSettings_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sliders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RowNumber = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageNameMobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClickCount = table.Column<int>(type: "int", nullable: false),
+                    NoIndex = table.Column<bool>(type: "bit", nullable: false),
+                    IsLink = table.Column<bool>(type: "bit", nullable: false),
+                    LinkUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LinkOut = table.Column<bool>(type: "bit", nullable: false),
+                    SeoTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeoKeyword = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sliders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sliders_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "treatmentCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -394,17 +511,17 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TreatmentCategory", x => x.Id);
+                    table.PrimaryKey("PK_treatmentCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TreatmentCategory_Language_LanguageId",
+                        name: "FK_treatmentCategories_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ModulCategory",
+                name: "ModulCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -428,23 +545,27 @@ namespace BlogProject.Infrastructure.Migrations
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ModulId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ModulId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LanguageId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ModulCategory", x => x.Id);
+                    table.PrimaryKey("PK_ModulCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ModulCategory_Language_LanguageId",
+                        name: "FK_ModulCategories_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Languages",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ModulCategory_Modul_ModulId",
+                        name: "FK_ModulCategories_Languages_LanguageId1",
+                        column: x => x.LanguageId1,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ModulCategories_Moduls_ModulId",
                         column: x => x.ModulId,
-                        principalTable: "Modul",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Moduls",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -477,14 +598,14 @@ namespace BlogProject.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ContactForms_Language_LanguageId",
+                        name: "FK_ContactForms_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "State",
+                name: "States",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -500,9 +621,9 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_State", x => x.Id);
+                    table.PrimaryKey("PK_States", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_State_Countries_CountryId",
+                        name: "FK_States_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "Id",
@@ -510,7 +631,7 @@ namespace BlogProject.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Speciality",
+                name: "Specializations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -530,27 +651,37 @@ namespace BlogProject.Infrastructure.Migrations
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DepartmentId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LanguageId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Speciality", x => x.Id);
+                    table.PrimaryKey("PK_Specializations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Speciality_Departments_DepartmentId",
+                        name: "FK_Specializations_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Speciality_Language_LanguageId",
+                        name: "FK_Specializations_Departments_DepartmentId1",
+                        column: x => x.DepartmentId1,
+                        principalTable: "Departments",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Specializations_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Specializations_Languages_LanguageId1",
+                        column: x => x.LanguageId1,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "TechnologicalDevice",
+                name: "TechnologicalDevices",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -579,22 +710,22 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TechnologicalDevice", x => x.Id);
+                    table.PrimaryKey("PK_TechnologicalDevices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TechnologicalDevice_Departments_DepartmentId",
+                        name: "FK_TechnologicalDevices_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_TechnologicalDevice_Language_LanguageId",
+                        name: "FK_TechnologicalDevices_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MenuSubCategory",
+                name: "MenuSubCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -620,17 +751,17 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuSubCategory", x => x.Id);
+                    table.PrimaryKey("PK_MenuSubCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MenuSubCategory_MenuCategory_MenuCategoryId",
+                        name: "FK_MenuSubCategories_MenuCategories_MenuCategoryId",
                         column: x => x.MenuCategoryId,
-                        principalTable: "MenuCategory",
+                        principalTable: "MenuCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Treatment",
+                name: "Treatments",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -655,29 +786,44 @@ namespace BlogProject.Infrastructure.Migrations
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TreatmentCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TreatmentCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DepartmentId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LanguageId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    TreatmentCategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Treatment", x => x.Id);
+                    table.PrimaryKey("PK_Treatments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Treatment_Departments_DepartmentId",
+                        name: "FK_Treatments_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Treatment_Language_LanguageId",
+                        name: "FK_Treatments_Departments_DepartmentId1",
+                        column: x => x.DepartmentId1,
+                        principalTable: "Departments",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Treatments_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Languages",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Treatment_TreatmentCategory_TreatmentCategoryId",
+                        name: "FK_Treatments_Languages_LanguageId1",
+                        column: x => x.LanguageId1,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Treatments_treatmentCategories_TreatmentCategoryId",
                         column: x => x.TreatmentCategoryId,
-                        principalTable: "TreatmentCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "treatmentCategories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Treatments_treatmentCategories_TreatmentCategoryId1",
+                        column: x => x.TreatmentCategoryId1,
+                        principalTable: "treatmentCategories",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -701,27 +847,37 @@ namespace BlogProject.Infrastructure.Migrations
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ReadCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ModulCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ModulCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LanguageId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ModulCategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Language_LanguageId",
+                        name: "FK_Comments_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Languages",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Comments_ModulCategory_ModulCategoryId",
+                        name: "FK_Comments_Languages_LanguageId1",
+                        column: x => x.LanguageId1,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Comments_ModulCategories_ModulCategoryId",
                         column: x => x.ModulCategoryId,
-                        principalTable: "ModulCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "ModulCategories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Comments_ModulCategories_ModulCategoryId1",
+                        column: x => x.ModulCategoryId1,
+                        principalTable: "ModulCategories",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "ModulSubCategory",
+                name: "ModulSubCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -743,21 +899,27 @@ namespace BlogProject.Infrastructure.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModulCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    ModulCategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ModulCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ModulSubCategory", x => x.Id);
+                    table.PrimaryKey("PK_ModulSubCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ModulSubCategory_Language_LanguageId",
+                        name: "FK_ModulSubCategories_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ModulSubCategory_ModulCategory_ModulCategoryId",
+                        name: "FK_ModulSubCategories_ModulCategories_ModulCategoryId",
                         column: x => x.ModulCategoryId,
-                        principalTable: "ModulCategory",
+                        principalTable: "ModulCategories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ModulSubCategories_ModulCategories_ModulCategoryId1",
+                        column: x => x.ModulCategoryId1,
+                        principalTable: "ModulCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -775,7 +937,8 @@ namespace BlogProject.Infrastructure.Migrations
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    StateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    StateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -784,14 +947,17 @@ namespace BlogProject.Infrastructure.Migrations
                         name: "FK_Cities_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Cities_State_StateId",
+                        name: "FK_Cities_Countries_CountryId1",
+                        column: x => x.CountryId1,
+                        principalTable: "Countries",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Cities_States_StateId",
                         column: x => x.StateId,
-                        principalTable: "State",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "States",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -824,7 +990,10 @@ namespace BlogProject.Infrastructure.Migrations
                     BlogCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AppUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SpecialityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    SpecialityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BlogCategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    DepartmentId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LanguageId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -836,21 +1005,36 @@ namespace BlogProject.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Blogs_BlogCategories_BlogCategoryId1",
+                        column: x => x.BlogCategoryId1,
+                        principalTable: "BlogCategories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Blogs_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blogs_Language_LanguageId",
+                        name: "FK_Blogs_Departments_DepartmentId1",
+                        column: x => x.DepartmentId1,
+                        principalTable: "Departments",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Blogs_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blogs_Speciality_SpecialityId",
+                        name: "FK_Blogs_Languages_LanguageId1",
+                        column: x => x.LanguageId1,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Blogs_Specializations_SpecialityId",
                         column: x => x.SpecialityId,
-                        principalTable: "Speciality",
+                        principalTable: "Specializations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -909,15 +1093,15 @@ namespace BlogProject.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_Language_LanguageId",
+                        name: "FK_BlogVideos_Languages_LanguageId",
                         column: x => x.LanguageId,
-                        principalTable: "Language",
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogVideos_Speciality_SpecialityId",
+                        name: "FK_BlogVideos_Specializations_SpecialityId",
                         column: x => x.SpecialityId,
-                        principalTable: "Speciality",
+                        principalTable: "Specializations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -929,7 +1113,36 @@ namespace BlogProject.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ModulSubCategoryDepartment",
+                name: "TechnologicalDevicesDepartment",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TechnologicalDeviceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TechnologicalDevicesDepartment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TechnologicalDevicesDepartment_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TechnologicalDevicesDepartment_TechnologicalDevices_TechnologicalDeviceId",
+                        column: x => x.TechnologicalDeviceId,
+                        principalTable: "TechnologicalDevices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ModulSubCategoryDepartments",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -942,17 +1155,17 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ModulSubCategoryDepartment", x => x.Id);
+                    table.PrimaryKey("PK_ModulSubCategoryDepartments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ModulSubCategoryDepartment_Departments_DepartmentId",
+                        name: "FK_ModulSubCategoryDepartments_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ModulSubCategoryDepartment_ModulSubCategory_ModulSubCategoryId",
+                        name: "FK_ModulSubCategoryDepartments_ModulSubCategories_ModulSubCategoryId",
                         column: x => x.ModulSubCategoryId,
-                        principalTable: "ModulSubCategory",
+                        principalTable: "ModulSubCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1003,6 +1216,9 @@ namespace BlogProject.Infrastructure.Migrations
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SpecialityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TreatmentCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AcademicTitleId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    DepartmentId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    SpecialityId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SpokenLanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -1012,71 +1228,76 @@ namespace BlogProject.Infrastructure.Migrations
                         name: "FK_Doctors_AcademicTitle_AcademicTitleId",
                         column: x => x.AcademicTitleId,
                         principalTable: "AcademicTitle",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_AcademicTitle_AcademicTitleId1",
+                        column: x => x.AcademicTitleId1,
+                        principalTable: "AcademicTitle",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Doctors_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Doctors_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Doctors_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Doctors_Gender_GenderId",
-                        column: x => x.GenderId,
-                        principalTable: "Gender",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Doctors_Language_LanguageId",
-                        column: x => x.LanguageId,
-                        principalTable: "Language",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Doctors_Speciality_SpecialityId",
-                        column: x => x.SpecialityId,
-                        principalTable: "Speciality",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Doctors_SpokenLanguage_SpokenLanguageId",
-                        column: x => x.SpokenLanguageId,
-                        principalTable: "SpokenLanguage",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Doctors_State_StateId",
-                        column: x => x.StateId,
-                        principalTable: "State",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Doctors_Departments_DepartmentId1",
+                        column: x => x.DepartmentId1,
+                        principalTable: "Departments",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Doctors_TreatmentCategory_TreatmentCategoryId",
-                        column: x => x.TreatmentCategoryId,
-                        principalTable: "TreatmentCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Doctors_Genders_GenderId",
+                        column: x => x.GenderId,
+                        principalTable: "Genders",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_Specializations_SpecialityId",
+                        column: x => x.SpecialityId,
+                        principalTable: "Specializations",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_Specializations_SpecialityId1",
+                        column: x => x.SpecialityId1,
+                        principalTable: "Specializations",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_SpokenLanguages_SpokenLanguageId",
+                        column: x => x.SpokenLanguageId,
+                        principalTable: "SpokenLanguages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_States_StateId",
+                        column: x => x.StateId,
+                        principalTable: "States",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Doctors_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Doctors_treatmentCategories_TreatmentCategoryId",
+                        column: x => x.TreatmentCategoryId,
+                        principalTable: "treatmentCategories",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Patient",
+                name: "Patients",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -1098,27 +1319,27 @@ namespace BlogProject.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patient", x => x.Id);
+                    table.PrimaryKey("PK_Patients", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Patient_Cities_CityId",
+                        name: "FK_Patients_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Patient_Countries_CountryId",
+                        name: "FK_Patients_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Patient_State_StateId",
+                        name: "FK_Patients_States_StateId",
                         column: x => x.StateId,
-                        principalTable: "State",
+                        principalTable: "States",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Patient_Users_AppUserId",
+                        name: "FK_Patients_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -1135,15 +1356,14 @@ namespace BlogProject.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    BlogId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BlogGalleries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlogGalleries_Blogs_BlogId",
-                        column: x => x.BlogId,
+                        name: "FK_BlogGalleries_Blogs_Id",
+                        column: x => x.Id,
                         principalTable: "Blogs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -1228,9 +1448,9 @@ namespace BlogProject.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DoctorSpecialities_Speciality_SpecialityId",
+                        name: "FK_DoctorSpecialities_Specializations_SpecialityId",
                         column: x => x.SpecialityId,
-                        principalTable: "Speciality",
+                        principalTable: "Specializations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1257,9 +1477,9 @@ namespace BlogProject.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DoctorSpokenLanguages_SpokenLanguage_SpokenLanguageId",
+                        name: "FK_DoctorSpokenLanguages_SpokenLanguages_SpokenLanguageId",
                         column: x => x.SpokenLanguageId,
-                        principalTable: "SpokenLanguage",
+                        principalTable: "SpokenLanguages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1286,17 +1506,12 @@ namespace BlogProject.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DoctorTreatments_Treatment_TreatmentId",
+                        name: "FK_DoctorTreatments_Treatments_TreatmentId",
                         column: x => x.TreatmentId,
-                        principalTable: "Treatment",
+                        principalTable: "Treatments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sliders_LanguageId",
-                table: "Sliders",
-                column: "LanguageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AcademicTitle_LanguageId",
@@ -1309,11 +1524,6 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogGalleries_BlogId",
-                table: "BlogGalleries",
-                column: "BlogId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Blogs_AppUserId",
                 table: "Blogs",
                 column: "AppUserId");
@@ -1324,14 +1534,29 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "BlogCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Blogs_BlogCategoryId1",
+                table: "Blogs",
+                column: "BlogCategoryId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Blogs_DepartmentId",
                 table: "Blogs",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Blogs_DepartmentId1",
+                table: "Blogs",
+                column: "DepartmentId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Blogs_LanguageId",
                 table: "Blogs",
                 column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blogs_LanguageId1",
+                table: "Blogs",
+                column: "LanguageId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Blogs_SpecialityId",
@@ -1369,6 +1594,11 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cities_CountryId1",
+                table: "Cities",
+                column: "CountryId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Cities_StateId",
                 table: "Cities",
                 column: "StateId");
@@ -1379,9 +1609,19 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_LanguageId1",
+                table: "Comments",
+                column: "LanguageId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_ModulCategoryId",
                 table: "Comments",
                 column: "ModulCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_ModulCategoryId1",
+                table: "Comments",
+                column: "ModulCategoryId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ContactForms_ContactFormSubjectId",
@@ -1434,6 +1674,11 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "AcademicTitleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Doctors_AcademicTitleId1",
+                table: "Doctors",
+                column: "AcademicTitleId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Doctors_AppUserId",
                 table: "Doctors",
                 column: "AppUserId");
@@ -1454,6 +1699,11 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Doctors_DepartmentId1",
+                table: "Doctors",
+                column: "DepartmentId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Doctors_GenderId",
                 table: "Doctors",
                 column: "GenderId");
@@ -1467,6 +1717,11 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "IX_Doctors_SpecialityId",
                 table: "Doctors",
                 column: "SpecialityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Doctors_SpecialityId1",
+                table: "Doctors",
+                column: "SpecialityId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Doctors_SpokenLanguageId",
@@ -1519,130 +1774,174 @@ namespace BlogProject.Infrastructure.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gender_LanguageId",
-                table: "Gender",
+                name: "IX_Genders_LanguageId",
+                table: "Genders",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MenuCategory_LanguageId",
-                table: "MenuCategory",
+                name: "IX_MenuCategories_LanguageId",
+                table: "MenuCategories",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MenuSubCategory_MenuCategoryId",
-                table: "MenuSubCategory",
+                name: "IX_MenuSubCategories_MenuCategoryId",
+                table: "MenuSubCategories",
                 column: "MenuCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModulCategory_LanguageId",
-                table: "ModulCategory",
+                name: "IX_ModulCategories_LanguageId",
+                table: "ModulCategories",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModulCategory_ModulId",
-                table: "ModulCategory",
+                name: "IX_ModulCategories_LanguageId1",
+                table: "ModulCategories",
+                column: "LanguageId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ModulCategories_ModulId",
+                table: "ModulCategories",
                 column: "ModulId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModulSubCategory_LanguageId",
-                table: "ModulSubCategory",
+                name: "IX_ModulSubCategories_LanguageId",
+                table: "ModulSubCategories",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModulSubCategory_ModulCategoryId",
-                table: "ModulSubCategory",
+                name: "IX_ModulSubCategories_ModulCategoryId",
+                table: "ModulSubCategories",
                 column: "ModulCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModulSubCategoryDepartment_DepartmentId",
-                table: "ModulSubCategoryDepartment",
+                name: "IX_ModulSubCategories_ModulCategoryId1",
+                table: "ModulSubCategories",
+                column: "ModulCategoryId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ModulSubCategoryDepartments_DepartmentId",
+                table: "ModulSubCategoryDepartments",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModulSubCategoryDepartment_ModulSubCategoryId",
-                table: "ModulSubCategoryDepartment",
+                name: "IX_ModulSubCategoryDepartments_ModulSubCategoryId",
+                table: "ModulSubCategoryDepartments",
                 column: "ModulSubCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patient_AppUserId",
-                table: "Patient",
+                name: "IX_Patients_AppUserId",
+                table: "Patients",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patient_CityId",
-                table: "Patient",
+                name: "IX_Patients_CityId",
+                table: "Patients",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patient_CountryId",
-                table: "Patient",
+                name: "IX_Patients_CountryId",
+                table: "Patients",
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patient_StateId",
-                table: "Patient",
+                name: "IX_Patients_StateId",
+                table: "Patients",
                 column: "StateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Speciality_DepartmentId",
-                table: "Speciality",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Speciality_LanguageId",
-                table: "Speciality",
+                name: "IX_SeoSettings_LanguageId",
+                table: "SeoSettings",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_State_CountryId",
-                table: "State",
+                name: "IX_Sliders_LanguageId",
+                table: "Sliders",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Specializations_DepartmentId",
+                table: "Specializations",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Specializations_DepartmentId1",
+                table: "Specializations",
+                column: "DepartmentId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Specializations_LanguageId",
+                table: "Specializations",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Specializations_LanguageId1",
+                table: "Specializations",
+                column: "LanguageId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_States_CountryId",
+                table: "States",
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TechnologicalDevice_DepartmentId",
-                table: "TechnologicalDevice",
+                name: "IX_TechnologicalDevices_DepartmentId",
+                table: "TechnologicalDevices",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TechnologicalDevice_LanguageId",
-                table: "TechnologicalDevice",
+                name: "IX_TechnologicalDevices_LanguageId",
+                table: "TechnologicalDevices",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Treatment_DepartmentId",
-                table: "Treatment",
+                name: "IX_TechnologicalDevicesDepartment_DepartmentId",
+                table: "TechnologicalDevicesDepartment",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Treatment_LanguageId",
-                table: "Treatment",
+                name: "IX_TechnologicalDevicesDepartment_TechnologicalDeviceId",
+                table: "TechnologicalDevicesDepartment",
+                column: "TechnologicalDeviceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_treatmentCategories_LanguageId",
+                table: "treatmentCategories",
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Treatment_TreatmentCategoryId",
-                table: "Treatment",
+                name: "IX_Treatments_DepartmentId",
+                table: "Treatments",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Treatments_DepartmentId1",
+                table: "Treatments",
+                column: "DepartmentId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Treatments_LanguageId",
+                table: "Treatments",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Treatments_LanguageId1",
+                table: "Treatments",
+                column: "LanguageId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Treatments_TreatmentCategoryId",
+                table: "Treatments",
                 column: "TreatmentCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TreatmentCategory_LanguageId",
-                table: "TreatmentCategory",
-                column: "LanguageId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Sliders_Language_LanguageId",
-                table: "Sliders",
-                column: "LanguageId",
-                principalTable: "Language",
-                principalColumn: "Id");
+                name: "IX_Treatments_TreatmentCategoryId1",
+                table: "Treatments",
+                column: "TreatmentCategoryId1");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Sliders_Language_LanguageId",
-                table: "Sliders");
-
             migrationBuilder.DropTable(
                 name: "BlogGalleries");
 
@@ -1677,16 +1976,25 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "Footers");
 
             migrationBuilder.DropTable(
-                name: "MenuSubCategory");
+                name: "MenuSubCategories");
 
             migrationBuilder.DropTable(
-                name: "ModulSubCategoryDepartment");
+                name: "ModulSubCategoryDepartments");
 
             migrationBuilder.DropTable(
-                name: "Patient");
+                name: "Patients");
 
             migrationBuilder.DropTable(
-                name: "TechnologicalDevice");
+                name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "SeoSettings");
+
+            migrationBuilder.DropTable(
+                name: "Sliders");
+
+            migrationBuilder.DropTable(
+                name: "TechnologicalDevicesDepartment");
 
             migrationBuilder.DropTable(
                 name: "Blogs");
@@ -1698,13 +2006,16 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "Doctors");
 
             migrationBuilder.DropTable(
-                name: "Treatment");
+                name: "Treatments");
 
             migrationBuilder.DropTable(
-                name: "MenuCategory");
+                name: "MenuCategories");
 
             migrationBuilder.DropTable(
-                name: "ModulSubCategory");
+                name: "ModulSubCategories");
+
+            migrationBuilder.DropTable(
+                name: "TechnologicalDevices");
 
             migrationBuilder.DropTable(
                 name: "BlogCategories");
@@ -1716,42 +2027,37 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Gender");
+                name: "Genders");
 
             migrationBuilder.DropTable(
-                name: "Speciality");
+                name: "Specializations");
 
             migrationBuilder.DropTable(
-                name: "SpokenLanguage");
+                name: "SpokenLanguages");
 
             migrationBuilder.DropTable(
-                name: "TreatmentCategory");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "ModulCategory");
+                name: "treatmentCategories");
 
             migrationBuilder.DropTable(
-                name: "State");
+                name: "ModulCategories");
+
+            migrationBuilder.DropTable(
+                name: "States");
 
             migrationBuilder.DropTable(
                 name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "Modul");
+                name: "Moduls");
 
             migrationBuilder.DropTable(
                 name: "Countries");
 
             migrationBuilder.DropTable(
-                name: "Language");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Sliders_LanguageId",
-                table: "Sliders");
-
-            migrationBuilder.DropColumn(
-                name: "LanguageId",
-                table: "Sliders");
+                name: "Languages");
         }
     }
 }

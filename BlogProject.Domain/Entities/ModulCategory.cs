@@ -2,7 +2,7 @@
 using BlogProject.Domain.Abstract;
 
 namespace BlogProject.Domain;
-public class ModulCategory :Entity, IEntity
+public class ModulCategory : Entity, IEntity
 {
     public int RowNumber { get; set; }
     public string? Name { get; set; }
@@ -23,8 +23,15 @@ public class ModulCategory :Entity, IEntity
     public DateTime? Created { get; set; }
     public string? ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
+
+    // Foreign Key'ler
+    public Guid LanguageId { get; set; }
     public Language Language { get; set; }
+
+    public Guid ModulId { get; set; }
     public Modul Modul { get; set; }
+
     public List<ModulSubCategory> ModulSubCategory { get; set; }
     public List<Comment> Comment { get; set; }
 }
+

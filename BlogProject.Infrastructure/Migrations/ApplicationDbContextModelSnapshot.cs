@@ -207,6 +207,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("DepartmentId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -214,6 +217,9 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("LanguageId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("Modified")
@@ -250,9 +256,13 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("DepartmentId1");
+
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("Speciality");
+                    b.HasIndex("LanguageId1");
+
+                    b.ToTable("Specializations");
                 });
 
             modelBuilder.Entity("BlogProject.DomaiN.SpokenLanguage", b =>
@@ -294,7 +304,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SpokenLanguage");
+                    b.ToTable("SpokenLanguages");
                 });
 
             modelBuilder.Entity("BlogProject.DomaiN.State", b =>
@@ -335,7 +345,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("State");
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.AcademicTitle", b =>
@@ -463,6 +473,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("BlogCategoryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("BlogCategoryId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("ClickCount")
                         .HasColumnType("int");
 
@@ -475,6 +488,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("DepartmentId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -485,6 +501,9 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("LanguageId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("LinkOut")
@@ -541,9 +560,15 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("BlogCategoryId");
 
+                    b.HasIndex("BlogCategoryId1");
+
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("DepartmentId1");
+
                     b.HasIndex("LanguageId");
+
+                    b.HasIndex("LanguageId1");
 
                     b.HasIndex("SpecialityId");
 
@@ -553,10 +578,6 @@ namespace BlogProject.Infrastructure.Migrations
             modelBuilder.Entity("BlogProject.Domain.BlogGallery", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BlogId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("Created")
@@ -580,8 +601,6 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
 
                     b.ToTable("BlogGalleries");
                 });
@@ -694,6 +713,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("CountryId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("Created")
                         .HasColumnType("datetime2");
 
@@ -721,6 +743,8 @@ namespace BlogProject.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
+
+                    b.HasIndex("CountryId1");
 
                     b.HasIndex("StateId");
 
@@ -751,6 +775,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("LanguageId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("LanguageId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
@@ -762,6 +789,9 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ModulCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ModulCategoryId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -789,7 +819,11 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
+                    b.HasIndex("LanguageId1");
+
                     b.HasIndex("ModulCategoryId");
+
+                    b.HasIndex("ModulCategoryId1");
 
                     b.ToTable("Comments");
                 });
@@ -1120,6 +1154,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("AcademicTitleId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("AcademicTitleId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
@@ -1151,6 +1188,9 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DepartmentId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
@@ -1216,6 +1256,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("SpecialityId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SpecialityId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("SpokenLanguageId")
                         .HasColumnType("uniqueidentifier");
 
@@ -1244,6 +1287,8 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("AcademicTitleId");
 
+                    b.HasIndex("AcademicTitleId1");
+
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("CityId");
@@ -1252,11 +1297,15 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("DepartmentId1");
+
                     b.HasIndex("GenderId");
 
                     b.HasIndex("LanguageId");
 
                     b.HasIndex("SpecialityId");
+
+                    b.HasIndex("SpecialityId1");
 
                     b.HasIndex("SpokenLanguageId");
 
@@ -1503,7 +1552,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("Gender");
+                    b.ToTable("Genders");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.Language", b =>
@@ -1545,7 +1594,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Language");
+                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.MenuCategory", b =>
@@ -1615,7 +1664,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("MenuCategory");
+                    b.ToTable("MenuCategories");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.MenuSubCategory", b =>
@@ -1685,7 +1734,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("MenuCategoryId");
 
-                    b.ToTable("MenuSubCategory");
+                    b.ToTable("MenuSubCategories");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.Modul", b =>
@@ -1727,7 +1776,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Modul");
+                    b.ToTable("Moduls");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.ModulCategory", b =>
@@ -1758,6 +1807,9 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("LanguageId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("LinkOut")
@@ -1803,9 +1855,11 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
+                    b.HasIndex("LanguageId1");
+
                     b.HasIndex("ModulId");
 
-                    b.ToTable("ModulCategory");
+                    b.ToTable("ModulCategories");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.ModulSubCategory", b =>
@@ -1850,6 +1904,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("ModulCategoryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("ModulCategoryId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -1880,7 +1937,9 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("ModulCategoryId");
 
-                    b.ToTable("ModulSubCategory");
+                    b.HasIndex("ModulCategoryId1");
+
+                    b.ToTable("ModulSubCategories");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.ModulSubCategoryDepartment", b =>
@@ -1913,7 +1972,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("ModulSubCategoryId");
 
-                    b.ToTable("ModulSubCategoryDepartment");
+                    b.ToTable("ModulSubCategoryDepartments");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.Patient", b =>
@@ -1977,7 +2036,102 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Patient");
+                    b.ToTable("Patients");
+                });
+
+            modelBuilder.Entity("BlogProject.Domain.SeoSetting", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AddThis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BingVerificationCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GoogleAnalyticscode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GoogleVerificationCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LiveSupport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SeoDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SeoKeyword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SeoTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SiteUrl")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("StructuredDataTool")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationCode8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WhatsAppSupport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("YandexMetrica")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("YandexVerificationCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("SeoSettings");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.TechnologicalDevice", b =>
@@ -2058,7 +2212,40 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("TechnologicalDevice");
+                    b.ToTable("TechnologicalDevices");
+                });
+
+            modelBuilder.Entity("BlogProject.Domain.TechnologicalDeviceDepartment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("DepartmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("TechnologicalDeviceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("TechnologicalDeviceId");
+
+                    b.ToTable("TechnologicalDevicesDepartment");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.Treatment", b =>
@@ -2079,6 +2266,9 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("DepartmentId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -2092,6 +2282,9 @@ namespace BlogProject.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("LanguageId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("Modified")
@@ -2133,15 +2326,24 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("TreatmentCategoryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("TreatmentCategoryId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("DepartmentId1");
+
                     b.HasIndex("LanguageId");
+
+                    b.HasIndex("LanguageId1");
 
                     b.HasIndex("TreatmentCategoryId");
 
-                    b.ToTable("Treatment");
+                    b.HasIndex("TreatmentCategoryId1");
+
+                    b.ToTable("Treatments");
                 });
 
             modelBuilder.Entity("BlogProject.Domain.TreatmentCategory", b =>
@@ -2205,7 +2407,7 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.ToTable("TreatmentCategory");
+                    b.ToTable("treatmentCategories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -2268,16 +2470,24 @@ namespace BlogProject.Infrastructure.Migrations
             modelBuilder.Entity("BlogProject.DomaiN.Speciality", b =>
                 {
                     b.HasOne("BlogProject.Domain.Department", "Department")
-                        .WithMany("Specialities")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("BlogProject.Domain.Language", "Language")
+                    b.HasOne("BlogProject.Domain.Department", null)
                         .WithMany("Specialities")
+                        .HasForeignKey("DepartmentId1");
+
+                    b.HasOne("BlogProject.Domain.Language", "Language")
+                        .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Language", null)
+                        .WithMany("Specialities")
+                        .HasForeignKey("LanguageId1");
 
                     b.Navigation("Department");
 
@@ -2315,22 +2525,34 @@ namespace BlogProject.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("BlogCategory", "BlogCategory")
-                        .WithMany("Blogs")
+                        .WithMany()
                         .HasForeignKey("BlogCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BlogProject.Domain.Department", "Department")
+                    b.HasOne("BlogCategory", null)
                         .WithMany("Blogs")
+                        .HasForeignKey("BlogCategoryId1");
+
+                    b.HasOne("BlogProject.Domain.Department", "Department")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BlogProject.Domain.Language", "Language")
+                    b.HasOne("BlogProject.Domain.Department", null)
                         .WithMany("Blogs")
+                        .HasForeignKey("DepartmentId1");
+
+                    b.HasOne("BlogProject.Domain.Language", "Language")
+                        .WithMany()
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Language", null)
+                        .WithMany("Blogs")
+                        .HasForeignKey("LanguageId1");
 
                     b.HasOne("BlogProject.DomaiN.Speciality", "Speciality")
                         .WithMany()
@@ -2353,7 +2575,7 @@ namespace BlogProject.Infrastructure.Migrations
                 {
                     b.HasOne("BlogProject.Domain.Blog", "Blog")
                         .WithMany("BlogGalleries")
-                        .HasForeignKey("BlogId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2406,15 +2628,19 @@ namespace BlogProject.Infrastructure.Migrations
             modelBuilder.Entity("BlogProject.Domain.City", b =>
                 {
                     b.HasOne("BlogProject.Domain.Country", "Country")
-                        .WithMany("Cities")
+                        .WithMany()
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Country", null)
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId1");
 
                     b.HasOne("BlogProject.DomaiN.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Country");
@@ -2425,16 +2651,24 @@ namespace BlogProject.Infrastructure.Migrations
             modelBuilder.Entity("BlogProject.Domain.Comment", b =>
                 {
                     b.HasOne("BlogProject.Domain.Language", "Language")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("BlogProject.Domain.Language", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("LanguageId1");
+
                     b.HasOne("BlogProject.Domain.ModulCategory", "ModulCategory")
-                        .WithMany("Comment")
+                        .WithMany()
                         .HasForeignKey("ModulCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.ModulCategory", null)
+                        .WithMany("Comment")
+                        .HasForeignKey("ModulCategoryId1");
 
                     b.Navigation("Language");
 
@@ -2503,52 +2737,64 @@ namespace BlogProject.Infrastructure.Migrations
             modelBuilder.Entity("BlogProject.Domain.Doctor", b =>
                 {
                     b.HasOne("BlogProject.Domain.AcademicTitle", "AcademicTitle")
-                        .WithMany("Doctors")
+                        .WithMany()
                         .HasForeignKey("AcademicTitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.AcademicTitle", null)
+                        .WithMany("Doctors")
+                        .HasForeignKey("AcademicTitleId1");
 
                     b.HasOne("BlogProject.Domain.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("BlogProject.Domain.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("BlogProject.Domain.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("BlogProject.Domain.Department", "Department")
-                        .WithMany("Doctors")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Department", null)
+                        .WithMany("Doctors")
+                        .HasForeignKey("DepartmentId1");
 
                     b.HasOne("BlogProject.Domain.Gender", "Gender")
                         .WithMany()
                         .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("BlogProject.Domain.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("BlogProject.DomaiN.Speciality", "Speciality")
-                        .WithMany("Doctors")
+                        .WithMany()
                         .HasForeignKey("SpecialityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.DomaiN.Speciality", null)
+                        .WithMany("Doctors")
+                        .HasForeignKey("SpecialityId1");
 
                     b.HasOne("BlogProject.DomaiN.SpokenLanguage", null)
                         .WithMany("Doctors")
@@ -2557,13 +2803,13 @@ namespace BlogProject.Infrastructure.Migrations
                     b.HasOne("BlogProject.DomaiN.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("BlogProject.Domain.TreatmentCategory", "TreatmentCategory")
                         .WithMany()
                         .HasForeignKey("TreatmentCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("AcademicTitle");
@@ -2702,15 +2948,19 @@ namespace BlogProject.Infrastructure.Migrations
             modelBuilder.Entity("BlogProject.Domain.ModulCategory", b =>
                 {
                     b.HasOne("BlogProject.Domain.Language", "Language")
-                        .WithMany("ModulCategories")
+                        .WithMany()
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Language", null)
+                        .WithMany("ModulCategories")
+                        .HasForeignKey("LanguageId1");
 
                     b.HasOne("BlogProject.Domain.Modul", "Modul")
                         .WithMany()
                         .HasForeignKey("ModulId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Language");
@@ -2724,9 +2974,15 @@ namespace BlogProject.Infrastructure.Migrations
                         .WithMany("ModulSubCategories")
                         .HasForeignKey("LanguageId");
 
-                    b.HasOne("BlogProject.Domain.ModulCategory", "ModulCategory")
+                    b.HasOne("BlogProject.Domain.ModulCategory", null)
                         .WithMany("ModulSubCategory")
                         .HasForeignKey("ModulCategoryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.ModulCategory", "ModulCategory")
+                        .WithMany()
+                        .HasForeignKey("ModulCategoryId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2787,6 +3043,17 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Navigation("State");
                 });
 
+            modelBuilder.Entity("BlogProject.Domain.SeoSetting", b =>
+                {
+                    b.HasOne("BlogProject.Domain.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+                });
+
             modelBuilder.Entity("BlogProject.Domain.TechnologicalDevice", b =>
                 {
                     b.HasOne("BlogProject.Domain.Department", null)
@@ -2802,25 +3069,56 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Navigation("Language");
                 });
 
-            modelBuilder.Entity("BlogProject.Domain.Treatment", b =>
+            modelBuilder.Entity("BlogProject.Domain.TechnologicalDeviceDepartment", b =>
                 {
                     b.HasOne("BlogProject.Domain.Department", "Department")
-                        .WithMany("Treatments")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BlogProject.Domain.Language", "Language")
-                        .WithMany("Treatments")
-                        .HasForeignKey("LanguageId")
+                    b.HasOne("BlogProject.Domain.TechnologicalDevice", "TechnologicalDevice")
+                        .WithMany()
+                        .HasForeignKey("TechnologicalDeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BlogProject.Domain.TreatmentCategory", "TreatmentCategory")
-                        .WithMany("Treatments")
-                        .HasForeignKey("TreatmentCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.Navigation("Department");
+
+                    b.Navigation("TechnologicalDevice");
+                });
+
+            modelBuilder.Entity("BlogProject.Domain.Treatment", b =>
+                {
+                    b.HasOne("BlogProject.Domain.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Department", null)
+                        .WithMany("Treatments")
+                        .HasForeignKey("DepartmentId1");
+
+                    b.HasOne("BlogProject.Domain.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.Language", null)
+                        .WithMany("Treatments")
+                        .HasForeignKey("LanguageId1");
+
+                    b.HasOne("BlogProject.Domain.TreatmentCategory", "TreatmentCategory")
+                        .WithMany()
+                        .HasForeignKey("TreatmentCategoryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("BlogProject.Domain.TreatmentCategory", null)
+                        .WithMany("Treatments")
+                        .HasForeignKey("TreatmentCategoryId1");
 
                     b.Navigation("Department");
 

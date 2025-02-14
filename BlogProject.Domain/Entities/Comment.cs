@@ -4,7 +4,7 @@ using BlogProject.Domain.Abstract;
 
 
 namespace BlogProject.Domain;
-public class Comment :Entity, IEntity
+public class Comment : Entity, IEntity
 {
     public string? Name { get; set; }
     public string? Surname { get; set; }
@@ -21,6 +21,12 @@ public class Comment :Entity, IEntity
     public string ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
     public DateTime? ReadCreated { get; set; }
+
+    // Foreign Key'ler
+    public Guid LanguageId { get; set; }
     public Language Language { get; set; }
+
+    public Guid ModulCategoryId { get; set; }
     public ModulCategory ModulCategory { get; set; }
 }
+

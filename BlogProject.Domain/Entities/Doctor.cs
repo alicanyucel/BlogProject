@@ -3,7 +3,7 @@ using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
 
 namespace BlogProject.Domain;
-public class Doctor :Entity, IEntity
+public class Doctor : Entity, IEntity
 {
     public int RowNumber { get; set; }
     public string? PhoneNumber { get; set; }
@@ -36,16 +36,39 @@ public class Doctor :Entity, IEntity
     public string? ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
     public DateTime? LastLogined { get; set; }
+
+    // Foreign Key Tanımlamaları
+    public Guid AppUserId { get; set; }
     public AppUser AppUser { get; set; }
+
+    public Guid LanguageId { get; set; }
     public Language Language { get; set; }
+
+    public Guid AcademicTitleId { get; set; }
     public AcademicTitle AcademicTitle { get; set; }
+
+    public Guid GenderId { get; set; }
     public Gender Gender { get; set; }
+
+    public Guid CountryId { get; set; }
     public Country Country { get; set; }
+
+    public Guid CityId { get; set; }
     public City City { get; set; }
+
+    public Guid StateId { get; set; }
     public State State { get; set; }
+
+    public Guid DepartmentId { get; set; }
     public Department Department { get; set; }
+
+    public Guid SpecialityId { get; set; }
     public Speciality Speciality { get; set; }
+
+    public Guid TreatmentCategoryId { get; set; }
     public TreatmentCategory TreatmentCategory { get; set; }
+
+    // Birçoktan Bire ve Birçoktan Çoğa İlişkiler
     public ICollection<DoctorDepartment> DoctorDepartments { get; set; }
     public List<DoctorSpeciality> DoctorSpecialities { get; set; }
     public List<DoctorTreatment> DoctorTreatments { get; set; }

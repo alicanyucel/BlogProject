@@ -4,7 +4,7 @@ using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
 
 namespace BlogProject.Domain;
-public class City :Entity, IEntity
+public class City : Entity, IEntity
 {
     public string? Name { get; set; }
     public string? Flag { get; set; }
@@ -13,6 +13,11 @@ public class City :Entity, IEntity
     public DateTime? Created { get; set; }
     public string? ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
+
+    // Foreign Key'ler
+    public Guid CountryId { get; set; }
     public Country Country { get; set; }
+
+    public Guid StateId { get; set; }
     public State State { get; set; }
 }

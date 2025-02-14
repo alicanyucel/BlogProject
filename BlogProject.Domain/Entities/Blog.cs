@@ -1,34 +1,50 @@
 ﻿
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
+
 namespace BlogProject.Domain;
-public class Blog :Entity, IEntity
+public class Blog : Entity, IEntity
 {
-	public int RowNumber { get; set; }
-	public string? Name { get; set; }
-	public string? Title { get; set; }
-	public string? ShortDescription { get; set; }
-	public string? Description { get; set; }
-	public bool Status { get; set; }
-	public string? ImageName { get; set; }
-	public int ClickCount { get; set; }
-	public bool NoIndex { get; set; }
-	public bool IsLink { get; set; }
-	public string? LinkUrl { get; set; }
-	public bool LinkOut { get; set; }
-	public string? VideoUrl { get; set; }
-	public string? ReadingTime { get; set; }
-	public string? SeoTitle { get; set; }
-	public string? SeoDescription { get; set; }
-	public string? SeoKeyword { get; set; }
-	public string? CreatedBy { get; set; }
-	public DateTime? Created { get; set; }
-	public string? ModifiedBy { get; set; }
-	public DateTime? Modified { get; set; }
-	public Language Language { get; set; }
-	public BlogCategory BlogCategory { get; set; }
-	public AppUser AppUser { get; set; }
-	public Department Department { get; set; }
-	public Speciality Speciality { get; set; }
-	public List<BlogGallery> BlogGalleries { get; set; }
+    public int RowNumber { get; set; }
+    public string? Name { get; set; }
+    public string? Title { get; set; }
+    public string? ShortDescription { get; set; }
+    public string? Description { get; set; }
+    public bool Status { get; set; }
+    public string? ImageName { get; set; }
+    public int ClickCount { get; set; }
+    public bool NoIndex { get; set; }
+    public bool IsLink { get; set; }
+    public string? LinkUrl { get; set; }
+    public bool LinkOut { get; set; }
+    public string? VideoUrl { get; set; }
+    public string? ReadingTime { get; set; }
+    public string? SeoTitle { get; set; }
+    public string? SeoDescription { get; set; }
+    public string? SeoKeyword { get; set; }
+    public string? CreatedBy { get; set; }
+    public DateTime? Created { get; set; }
+    public string? ModifiedBy { get; set; }
+    public DateTime? Modified { get; set; }
+
+    // Foreign Key'ler
+    public Guid LanguageId { get; set; }
+    public Language Language { get; set; }
+
+    public Guid BlogCategoryId { get; set; }
+    public BlogCategory BlogCategory { get; set; }
+
+    public Guid AppUserId { get; set; }
+    public AppUser AppUser { get; set; }
+
+    public Guid DepartmentId { get; set; }
+    public Department Department { get; set; }
+
+    public Guid SpecialityId { get; set; }
+    public Speciality Speciality { get; set; }
+
+    // BlogGallery ile ilişki
+    public List<BlogGallery> BlogGalleries { get; set; }
 }
+
+
