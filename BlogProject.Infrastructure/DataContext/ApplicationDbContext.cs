@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogProject.Infrastructure.DataContext;
 
-public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>, IUnitOfWork
+public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>, IUnitOfWork
 {
     public ApplicationDbContext(DbContextOptions options) : base(options) { }
     

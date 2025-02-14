@@ -16,6 +16,7 @@ namespace BlogProject.WebApi.Middleware
                     // migration atıldıgı zaman kullanıcı default olustur
                     AppUser user = new()
                     {
+                       
                         UserName = "admin",
                         Email = "admin@admin.com",
                         FirstName = "Ali Can",

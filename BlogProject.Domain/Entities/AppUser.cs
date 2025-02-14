@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace BlogProject.Domain;
-public class AppUser : IdentityUser<int>
+public class AppUser : IdentityUser<Guid>
 {
     public int? LanguageId { get; set; }
     public string FirstName { get; set; }
@@ -21,5 +21,6 @@ public class AppUser : IdentityUser<int>
     public List<Patient> Patients { get; set; }
     public List<Blog> Blogs { get; set; }
     public Language Language { get; set; }
-
+    public string? RefreshToken { get; set; }
+    public DateTime? RefreshTokenExpires { get; set; }
 }
