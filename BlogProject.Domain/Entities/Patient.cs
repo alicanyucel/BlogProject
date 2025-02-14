@@ -9,9 +9,6 @@ public class Patient :Entity, IEntity
 	public string? Gender { get; set; }
 	public string? PhoneNumber { get; set; }
 	public string? BloodGroup { get; set; }
-	public int? CountryId { get; set; }
-	public int? CityId { get; set; }
-	public int? StateId { get; set; }
 	public string? Address { get; set; }
 	public string? ZipCode { get; set; }
 	public bool? Status { get; set; }
@@ -20,7 +17,6 @@ public class Patient :Entity, IEntity
 	public DateTime? Created { get; set; }
 	public string? ModifiedBy { get; set; }
 	public DateTime? Modified { get; set; }
-	public int AppUserId { get; set; }
 	public AppUser AppUser { get; set; }
 	public Country Country { get; set; }
 	public City City { get; set; }

@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 namespace BlogProject.Domain;
 public class AcademicTitle :Entity,IEntity
 {
-    public int LanguageId { get; set; }
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

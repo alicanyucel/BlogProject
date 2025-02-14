@@ -6,15 +6,8 @@ namespace BlogProject.Domain;
 public class Doctor :Entity, IEntity
 {
     public int RowNumber { get; set; }
-    public int? GenderId { get; set; }
-    public int? DepartmentId { get; set; }
-    public int? SpecialityId { get; set; }
-    public int? TreatmentCategoryId { get; set; }
     public string? PhoneNumber { get; set; }
     public string? Description { get; set; }
-    public int? CountryId { get; set; }
-    public int? CityId { get; set; }
-    public int? StateId { get; set; }
     public string? Address { get; set; }
     public string? ZipCode { get; set; }
     public bool Status { get; set; }
@@ -43,7 +36,6 @@ public class Doctor :Entity, IEntity
     public string? ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
     public DateTime? LastLogined { get; set; }
-    public int AppUserId { get; set; }
     public AppUser AppUser { get; set; }
     public Language Language { get; set; }
     public AcademicTitle AcademicTitle { get; set; }

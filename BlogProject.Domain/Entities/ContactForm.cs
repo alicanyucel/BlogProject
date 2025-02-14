@@ -17,5 +17,5 @@ public class ContactForm :Entity, IEntity
     public string ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
     public ContactFormSubject ContactFormSubject { get; set; }
-    public Language Language { get; set; }
+   // public Language Language { get; set; }
 }
