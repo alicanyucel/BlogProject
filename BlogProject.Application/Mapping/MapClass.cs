@@ -1,6 +1,8 @@
 ﻿
 
 using AutoMapper;
+using BlogProject.Application.Features.Slider.AddSlider;
+using BlogProject.Application.Features.Slider.UpdateSlider;
 
 namespace BlogProject.Application.Mapping
 {
@@ -8,7 +10,8 @@ namespace BlogProject.Application.Mapping
     {
         public MapClass()
         {
-            
+            CreateMap<UpdateSliderByIdCommand,Slider>().ReverseMap();
+            CreateMap<AddSliderCommand,Slider>().ReverseMap();
         }
     }
 }
