@@ -1,16 +1,9 @@
 ﻿
-
-using BlogProject.Domain;
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class ContactForm : IEntity
+public class ContactForm :Entity, IEntity
 {
-    [Key]
-    public int ContactFormId { get; set; }
-    public int LanguageId { get; set; }
-    public int? ContactFormSubjectId { get; set; }
     public string? Name { get; set; }
     public string? Surname { get; set; }
     public string? Email { get; set; }

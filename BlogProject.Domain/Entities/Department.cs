@@ -2,14 +2,12 @@
 
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace BlogProject.Domain;
-public class Department : IEntity
+public class Department :Entity,IEntity 
 {
-    [Key]
-    public int DepartmentId { get; set; }
-    public int LanguageId { get; set; }
+   
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

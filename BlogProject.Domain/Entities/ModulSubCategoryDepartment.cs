@@ -1,13 +1,8 @@
 ﻿using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class ModulSubCategoryDepartment : IEntity
+public class ModulSubCategoryDepartment :Entity, IEntity
 {
-	[Key]
-	public int ModulSubCategoryDepartmentId { get; set; }
-	public int? ModulSubCategoryId { get; set; }
-	public int? DepartmentId { get; set; }
 	public string? CreatedBy { get; set; }
 	public DateTime? Created { get; set; }
 	public string? ModifiedBy { get; set; }

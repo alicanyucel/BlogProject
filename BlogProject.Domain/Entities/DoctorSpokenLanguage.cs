@@ -2,15 +2,10 @@
 
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class DoctorSpokenLanguage : IEntity
+public class DoctorSpokenLanguage :Entity, IEntity
 {
-    [Key]
-    public int DoctorSpokenLanguageId { get; set; }
-    public int DoctorId { get; set; }
-    public int SpokenLanguageId { get; set; }
     public string? CreatedBy { get; set; }
     public DateTime? Created { get; set; }
     public string? ModifiedBy { get; set; }

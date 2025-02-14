@@ -1,15 +1,10 @@
 ﻿using BlogProject.Domai;
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class Doctor : IEntity
+public class Doctor :Entity, IEntity
 {
-    [Key]
-    public int DoctorId { get; set; }
-    public int? LanguageId { get; set; }
-    public int AcademicTitleId { get; set; }
     public int RowNumber { get; set; }
     public int? GenderId { get; set; }
     public int? DepartmentId { get; set; }

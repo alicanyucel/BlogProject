@@ -1,17 +1,9 @@
 ﻿
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
-using System.ComponentModel.DataAnnotations;
 namespace BlogProject.Domain;
-public class Blog : IEntity
+public class Blog :Entity, IEntity
 {
-	[Key]
-	public int BlogId { get; set; }
-	public int? LanguageId { get; set; }
-	public int BlogCategoryId { get; set; }
-	public int? AppUserId { get; set; }
-	public int? DepartmentId { get; set; }
-	public int? SpecialityId { get; set; }
 	public int RowNumber { get; set; }
 	public string? Name { get; set; }
 	public string? Title { get; set; }

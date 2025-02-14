@@ -1,13 +1,9 @@
 ﻿
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class TreatmentCategory : IEntity
+public class TreatmentCategory :Entity, IEntity
 {
-    [Key]
-    public int TreatmentCategoryId { get; set; }
-    public int? LanguageId { get; set; }
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

@@ -4,11 +4,8 @@ using BlogProject.Domain.Abstract;
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class BlogGallery : IEntity
+public class BlogGallery :Entity, IEntity
 {
-    [Key]
-    public int BlogGalleryId { get; set; }
-    public int BlogId { get; set; }
     public string ImageName { get; set; }
     public string ImageTitle { get; set; }
     public string? CreatedBy { get; set; }

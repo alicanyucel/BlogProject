@@ -1,13 +1,10 @@
 ﻿
 using BlogProject.Domain;
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.DomaiN;
-public class SpokenLanguage : IEntity
+public class SpokenLanguage :Entity, IEntity
 {
-    [Key]
-    public int SpokenLanguageId { get; set; }
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

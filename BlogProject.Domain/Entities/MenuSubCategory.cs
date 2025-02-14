@@ -1,14 +1,10 @@
 ﻿
 
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class MenuSubCategory : IEntity
+public class MenuSubCategory :Entity, IEntity
 {
-	[Key]
-	public int MenuSubCategoryId { get; set; }
-	public int MenuCategoryId { get; set; }
 	public int RowNumber { get; set; }
 	public string? Name { get; set; }
 	public string? Title { get; set; }

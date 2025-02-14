@@ -1,14 +1,11 @@
 ﻿
 
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class DoctorGallery : IEntity
+public class DoctorGallery :Entity, IEntity
 {
-    [Key]
-    public int DoctorGalleryId { get; set; }
-    public int DoctorId { get; set; }
+   
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

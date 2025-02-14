@@ -1,14 +1,11 @@
 ﻿
 
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class ContactFormSubject : IEntity
+public class ContactFormSubject :Entity, IEntity
 {
-    [Key]
-    public int ContactFormSubjectId { get; set; }
-    public int LanguageId { get; set; }
+   
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

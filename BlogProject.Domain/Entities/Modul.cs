@@ -1,13 +1,10 @@
 ﻿
 
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class Modul : IEntity
+public class Modul:Entity, IEntity
 {
-    [Key]
-    public int ModulId { get; set; }
     public int RowNumber { get; set; }
     public string? Name { get; set; }
     public string? Title { get; set; }

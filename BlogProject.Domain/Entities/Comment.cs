@@ -1,16 +1,11 @@
 ﻿
 
 using BlogProject.Domain.Abstract;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace BlogProject.Domain;
-public class Comment : IEntity
+public class Comment :Entity, IEntity
 {
-    [Key]
-    public int CommentId { get; set; }
-    public int LanguageId { get; set; }
-    public int? ModulCategoryId { get; set; }
-    public int? ModulSubCategoryId { get; set; }
     public string? Name { get; set; }
     public string? Surname { get; set; }
     public string? Email { get; set; }

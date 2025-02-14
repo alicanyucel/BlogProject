@@ -1,14 +1,10 @@
 ﻿using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace BlogProject.Domain;
-public class DoctorSpeciality : IEntity
+public class DoctorSpeciality :Entity, IEntity
 {
-    [Key]
-    public int DoctorSpecialityId { get; set; }
-    public int DoctorId { get; set; }
-    public int SpecialityId { get; set; }
     public string? CreatedBy { get; set; }
     public DateTime? Created { get; set; }
     public string? ModifiedBy { get; set; }

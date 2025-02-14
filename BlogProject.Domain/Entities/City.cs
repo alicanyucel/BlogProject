@@ -2,16 +2,10 @@
 
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
-using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
-public class City : IEntity
+public class City :Entity, IEntity
 {
-
-    [Key]
-    public int CityId { get; set; }
-    public int? StateId { get; set; }
-    public int? CountryId { get; set; }
     public string? Name { get; set; }
     public string? Flag { get; set; }
     public bool? Status { get; set; }
