@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlogProject.Application.Features.Auth.Login
 {
-    internal class LoginCommandResponse
+    public class LoginCommandResponse
     {
     }
 }
