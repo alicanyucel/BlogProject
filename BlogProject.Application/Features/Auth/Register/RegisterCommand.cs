@@ -4,7 +4,7 @@
 namespace BlogProject.Application.Features.Auth.Register
 {
     public sealed record RegisterCommand(
-     string Name,
+     string FirstName,
      string Lastname,
      string Email,
      string UserName,
