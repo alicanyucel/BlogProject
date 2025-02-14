@@ -1,4 +1,5 @@
 ﻿using BlogProject.Application.Features.Auth.Login;
+using BlogProject.Application.Features.Auth.Register;
 using BlogProject.WebApi.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +19,13 @@ namespace BlogProject.WebApi.Controllers
         {
             var response = await _mediator.Send(request, cancellationToken);
             return StatusCode(response.StatusCode, response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register([FromForm] RegisterCommand request, CancellationToken cancellationToken)
+        {
+
+            await _mediator.Send(request, cancellationToken);
+            return NoContent();
         }
     }
 }
