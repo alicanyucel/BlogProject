@@ -4,6 +4,7 @@ using BlogProject.Infrastructure.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogProject.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250214115645_mg5545")]
+    partial class mg5545
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +34,18 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConfirmCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Districht")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -44,9 +58,12 @@ namespace BlogProject.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("ImageName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LanguageId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -78,10 +95,20 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("UserStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserType")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

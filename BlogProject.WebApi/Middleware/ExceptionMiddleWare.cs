@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BlogProject.WebApi.Middleware
 {
+
     public static class ExtensionsMiddleware
     {
         public static void CreateFirstUser(WebApplication app)
@@ -16,11 +17,10 @@ namespace BlogProject.WebApi.Middleware
                     // migration atıldıgı zaman kullanıcı default olustur
                     AppUser user = new()
                     {
-                       
                         UserName = "admin",
                         Email = "admin@admin.com",
                         FirstName = "Ali Can",
-                        Surname = "Yücel",
+                        LastName = "Yücel",
                         EmailConfirmed = true
                     };
                     // usernbame=admin

@@ -13,8 +13,8 @@ using System.Text;
 namespace BlogProject.Infrastructure.Services;
 
 internal class JwtProvider(
-        UserManager<AppUser> userManager,
-        IOptions<JwtOptions> jwtOptions) : IJwtProvider
+       UserManager<AppUser> userManager,
+       IOptions<JwtOptions> jwtOptions) : IJwtProvider
 {
     public async Task<LoginCommandResponse> CreateToken(AppUser user)
     {
@@ -52,10 +52,5 @@ internal class JwtProvider(
         await userManager.UpdateAsync(user);
 
         return new(token, refreshToken, refreshTokenExpires);
-    }
-
-    Task<LoginCommandResponse> IJwtProvider.CreateToken(AppUser user)
-    {
-        throw new NotImplementedException();
     }
 }
