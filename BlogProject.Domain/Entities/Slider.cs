@@ -1,7 +1,4 @@
-﻿
-
-using BlogProject.Domain;
-using BlogProject.Domain.Abstract;
+﻿using BlogProject.Domain.Abstract;
 using System.ComponentModel.DataAnnotations;
 
 public class Slider : IEntity
