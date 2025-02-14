@@ -16,11 +16,7 @@ public class AppUser : IdentityUser<Guid>
     public bool? UserStatus { get; set; }
     public string? UserType { get; set; }
 
-    //public List<User> Users { get; set; }        
-    public List<Doctor> Doctors { get; set; }
-    public List<Patient> Patients { get; set; }
-    public List<Blog> Blogs { get; set; }
-    public Language Language { get; set; }
+    //public List<User> Users { get; set; }      
     public string? RefreshToken { get; set; }
     public DateTime? RefreshTokenExpires { get; set; }
 }

@@ -28,5 +28,4 @@ public class Slider : IEntity
 	public DateTime? Created { get; set; }
 	public string? ModifiedBy { get; set; }
 	public DateTime? Modified { get; set; }
-	public Language Language { get; set; }
 }
