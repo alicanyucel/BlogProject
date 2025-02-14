@@ -13,24 +13,24 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
 {
     public ApplicationDbContext(DbContextOptions options) : base(options) { }
     DbSet<Slider> Sliders { get; set; }
-  //  DbSet<Blog> Blogs { get; set; }
-  //  DbSet<BlogCategory> BlogCategories { get; set; }
-  //  DbSet<BlogGallery> BlogGalleries { get; set; }
-  //  DbSet<BlogVideo> BlogVideos { get; set; }
-  //  DbSet<City> Cities { get; set; }
-  //  DbSet<Comment> Comments { get; set; }
-  //  DbSet<Contact> Contacts { get; set; }
-  //  DbSet<ContactForm> ContactForms { get; set; }
-  //  DbSet<ContactFormSubject> ContactFormsSubjects { get; set; }
-  //  DbSet<Country> Countries { get; set; }
-  //  DbSet<Department> Departments { get; set; }
-  //  DbSet<Doctor> Doctors { get; set; }
-  //  DbSet<DoctorDepartment> DoctorDepartments { get; set; }
-  //  DbSet<DoctorGallery> DoctorGalleries { get; set; }
-  //  DbSet<DoctorSpeciality> DoctorSpecialities { get; set; }
-  //  DbSet<DoctorSpokenLanguage> DoctorSpokenLanguages { get; set; }
-  //  DbSet<DoctorTreatment> DoctorTreatments { get; set; }
-  //  DbSet<Footer> Footers { get; set; }
+    DbSet<Blog> Blogs { get; set; }
+    DbSet<BlogCategory> BlogCategories { get; set; }
+    DbSet<BlogGallery> BlogGalleries { get; set; }
+    DbSet<BlogVideo> BlogVideos { get; set; }
+    DbSet<City> Cities { get; set; }
+    DbSet<Comment> Comments { get; set; }
+    DbSet<Contact> Contacts { get; set; }
+    DbSet<ContactForm> ContactForms { get; set; }
+    DbSet<ContactFormSubject> ContactFormsSubjects { get; set; }
+    DbSet<Country> Countries { get; set; }
+    DbSet<Department> Departments { get; set; }
+    DbSet<Doctor> Doctors { get; set; }
+    DbSet<DoctorDepartment> DoctorDepartments { get; set; }
+    DbSet<DoctorGallery> DoctorGalleries { get; set; }
+    DbSet<DoctorSpeciality> DoctorSpecialities { get; set; }
+    DbSet<DoctorSpokenLanguage> DoctorSpokenLanguages { get; set; }
+    DbSet<DoctorTreatment> DoctorTreatments { get; set; }
+   DbSet<Footer> Footers { get; set; }
   ////  DbSet<Language> Languages { get; set; }
   //  DbSet<Gender> Genders { get; set; }
   //  DbSet<MenuCategory> MenuCategories { get; set; }
