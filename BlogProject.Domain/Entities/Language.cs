@@ -2,6 +2,7 @@
 
 using BlogProject.Domain.Abstract;
 using BlogProject.DomaiN;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
 
@@ -34,4 +35,5 @@ public class Language :Entity, IEntity
     public List<Comment> Comments { get; set; }
     public List<ModulCategory> ModulCategories { get; set; }
     public List<ModulSubCategory> ModulSubCategories { get; set; }
+
 }
