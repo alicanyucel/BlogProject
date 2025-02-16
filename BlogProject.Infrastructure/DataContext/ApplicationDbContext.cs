@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BlogProject.Domain.Entities;
-using BlogProject.Infrastructure.Configurations;
 
 namespace BlogProject.Infrastructure.DataContext;
 
@@ -18,8 +17,15 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfiguration(new LanguageConfiguration());
+        builder.Entity<Slider>()
+        .HasOne(s => s.Language)
+        .WithMany(l => l.Sliders)
+        .HasForeignKey(s => s.LanguageId)
+        .OnDelete(DeleteBehavior.NoAction); // Silme işlemi yapılmıyor, NoAction
 
+        // Language için yapılandırma (varsayılan olarak zaten var)
+        builder.Entity<Language>()
+            .HasKey(l => l.LanguageId);
         builder.ApplyConfigurationsFromAssembly(typeof(DependencyInjection).Assembly);
         // istenmeyen identity tablolar
         builder.Ignore<IdentityUserLogin<Guid>>();

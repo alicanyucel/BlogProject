@@ -7,7 +7,6 @@ public class Slider : IEntity
 {
 	[Key]
 	public Guid SliderId { get; set; }
-	public Guid LanguageId { get; set; }
 	public int RowNumber { get; set; }
 	public string? Name { get; set; }
 	public string? Title { get; set; }
@@ -27,5 +26,6 @@ public class Slider : IEntity
 	public DateTime? Created { get; set; }
 	public string? ModifiedBy { get; set; }
 	public DateTime? Modified { get; set; }
-	public Language Language { get; set; }
+	public Guid LanguageId { get; set; }
+    public Language Language { get; set; }
 }
