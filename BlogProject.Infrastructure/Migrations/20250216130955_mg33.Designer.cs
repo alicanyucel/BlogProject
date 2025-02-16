@@ -4,6 +4,7 @@ using BlogProject.Infrastructure.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogProject.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250216130955_mg33")]
+    partial class mg33
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,9 +140,6 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<Guid>("LanguageId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("LanguageId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("LinkOut")
                         .HasColumnType("bit");
 
@@ -187,8 +187,6 @@ namespace BlogProject.Infrastructure.Migrations
 
                     b.HasIndex("LanguageId");
 
-                    b.HasIndex("LanguageId1");
-
                     b.ToTable("Sliders", (string)null);
                 });
 
@@ -220,16 +218,7 @@ namespace BlogProject.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BlogProject.Domain.Language", null)
-                        .WithMany("Sliders")
-                        .HasForeignKey("LanguageId1");
-
                     b.Navigation("Language");
-                });
-
-            modelBuilder.Entity("BlogProject.Domain.Language", b =>
-                {
-                    b.Navigation("Sliders");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,5 @@
-﻿using BlogProject.Domain.Repositories;
-using BlogProject.DomaiN;
+﻿using BlogProject.Domain;
+using BlogProject.Domain.Repositories;
 using BlogProject.Infrastructure.DataContext;
 using GenericRepository;
 

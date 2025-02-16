@@ -24,4 +24,8 @@
     <PackageReference Include="TS.Result" Version="9.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Event\" />
+  </ItemGroup>
+
 </Project>

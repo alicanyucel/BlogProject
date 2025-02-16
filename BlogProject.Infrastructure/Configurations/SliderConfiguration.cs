@@ -1,4 +1,4 @@
-﻿using BlogProject.DomaiN;
+﻿using BlogProject.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace BlogProject.Infrastructure.Configurations
@@ -9,7 +9,7 @@ namespace BlogProject.Infrastructure.Configurations
         {
             builder.ToTable("Sliders");
 
-            builder.HasKey(s => s.Id);
+            builder.HasKey(s => s.SliderId);
 
             builder.Property(s => s.RowNumber)
                 .IsRequired();

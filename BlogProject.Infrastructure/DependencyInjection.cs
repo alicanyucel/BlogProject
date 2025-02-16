@@ -1,4 +1,5 @@
 ﻿using BlogProject.Domain;
+using BlogProject.Domain.Entities;
 using BlogProject.Infrastructure.DataContext;
 using BlogProject.Infrastructure.Options;
 using GenericRepository;
