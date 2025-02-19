@@ -1,14 +1,13 @@
 ﻿
 using BlogProject.Domain.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogProject.Domain;
 public class Language : IEntity
-{
-    [Key]
-    public Guid LanguageId { get; set; }
-    public Guid RowNumber { get; set; }
-    public List<Slider> Sliders { get; set; } // bu değerler language tablosunda gozukmeyecektir sadece ilşkili olduugnu soyluyor
-
-
-}
+    {
+        public int LanguageId { get;init; } // Primary Key
+        public int RowNumber { get; set; } // Diğer bilgiler
+    // Sliders tablosu ile ilişki
+    public List<Slider> Sliders { get; set; } // Foreign key ile ilişkili
+    }

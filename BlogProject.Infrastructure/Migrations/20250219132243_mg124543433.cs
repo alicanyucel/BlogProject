@@ -5,7 +5,7 @@
 namespace BlogProject.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class mg19 : Migration
+    public partial class mg124543433 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

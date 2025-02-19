@@ -17,15 +17,7 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Slider>()
-        .HasOne(s => s.Language)
-        .WithMany(l => l.Sliders)
-        .HasForeignKey(s => s.LanguageId)
-        .OnDelete(DeleteBehavior.NoAction); // Silme işlemi yapılmıyor, NoAction
-
-        // Language için yapılandırma (varsayılan olarak zaten var)
-        builder.Entity<Language>()
-            .HasKey(l => l.LanguageId);
+       
         builder.ApplyConfigurationsFromAssembly(typeof(DependencyInjection).Assembly);
         // istenmeyen identity tablolar
         builder.Ignore<IdentityUserLogin<Guid>>();

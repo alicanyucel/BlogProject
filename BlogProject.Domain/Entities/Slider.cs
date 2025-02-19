@@ -1,13 +1,13 @@
 ﻿
 using BlogProject.Domain.Abstract;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlogProject.Domain;
 public class Slider : IEntity
 {
-	[Key]
-	public Guid SliderId { get; set; }
-	public int RowNumber { get; set; }
+    public int SliderId { get; set; }
+	public int? RowNumber { get; set; }
 	public string? Name { get; set; }
 	public string? Title { get; set; }
 	public string? Description { get; set; }
@@ -26,6 +26,7 @@ public class Slider : IEntity
 	public DateTime? Created { get; set; }
 	public string? ModifiedBy { get; set; }
 	public DateTime? Modified { get; set; }
-	public Guid LanguageId { get; set; }
-    public Language Language { get; set; }
+    [ForeignKey("LanguageId")]
+	public int LanguageId { get; set; }
+    public Language Language{ get; set; }
 }

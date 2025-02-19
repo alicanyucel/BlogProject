@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlogProject.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class m21 : Migration
+    public partial class mg12255656 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,8 +15,9 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "Languages",
                 columns: table => new
                 {
-                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RowNumber = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LanguageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RowNumber = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,8 +71,9 @@ namespace BlogProject.Infrastructure.Migrations
                 name: "Sliders",
                 columns: table => new
                 {
-                    SliderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RowNumber = table.Column<int>(type: "int", nullable: false),
+                    SliderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RowNumber = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -90,7 +92,7 @@ namespace BlogProject.Infrastructure.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LanguageId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +101,8 @@ namespace BlogProject.Infrastructure.Migrations
                         name: "FK_Sliders_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "LanguageId");
+                        principalColumn: "LanguageId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

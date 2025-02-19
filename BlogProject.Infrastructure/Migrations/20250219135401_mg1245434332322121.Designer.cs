@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogProject.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250216133758_m21")]
-    partial class m21
+    [Migration("20250219135401_mg1245434332322121")]
+    partial class mg1245434332322121
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,12 +94,14 @@ namespace BlogProject.Infrastructure.Migrations
 
             modelBuilder.Entity("BlogProject.Domain.Language", b =>
                 {
-                    b.Property<Guid>("LanguageId")
+                    b.Property<int>("LanguageId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("RowNumber")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LanguageId"));
+
+                    b.Property<int>("RowNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("LanguageId");
 
@@ -108,9 +110,11 @@ namespace BlogProject.Infrastructure.Migrations
 
             modelBuilder.Entity("BlogProject.Domain.Slider", b =>
                 {
-                    b.Property<Guid>("SliderId")
+                    b.Property<int>("SliderId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SliderId"));
 
                     b.Property<int>("ClickCount")
                         .HasColumnType("int");
@@ -133,8 +137,8 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<bool>("IsLink")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("LanguageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LinkOut")
                         .HasColumnType("bit");
@@ -154,7 +158,7 @@ namespace BlogProject.Infrastructure.Migrations
                     b.Property<bool>("NoIndex")
                         .HasColumnType("bit");
 
-                    b.Property<int>("RowNumber")
+                    b.Property<int?>("RowNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("SeoDescription")
@@ -204,7 +208,7 @@ namespace BlogProject.Infrastructure.Migrations
                     b.HasOne("BlogProject.Domain.Language", "Language")
                         .WithMany("Sliders")
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Language");
