@@ -1,5 +1,5 @@
 ﻿using BlogProject.Application.Behavior;
-using BlogProject.Domain;
+using BlogProject.Domain.Entities;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +12,13 @@ public static class DependencyInjection
 
         services.AddAutoMapper(typeof(DependencyInjection).Assembly);
 
-
+        services.AddMediatR(conf =>
+        {
+            conf.RegisterServicesFromAssemblies(
+                typeof(DependencyInjection).Assembly,
+                typeof(AppUser).Assembly);
+            conf.AddOpenBehavior(typeof(ValidationBehavior<,>));
+        });
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         return services;

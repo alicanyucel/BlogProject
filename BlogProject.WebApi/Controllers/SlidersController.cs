@@ -1,43 +1,22 @@
-﻿
+﻿using Microsoft.AspNetCore.Mvc;
+using Liberyus.WebApi.Abstractions;
+using MediatR;
+using BlogProject.Application.Features.Slider.CreateSlider;
+using Microsoft.AspNetCore.Authorization;
+[AllowAnonymous]
 
-using Microsoft.AspNetCore.Mvc;
-using BlogProject.Domain;
-using BlogProject.Infrastructure.DataContext;
 
-[ApiController]
-[Route("api/[controller]")]
-public class SliderController : ControllerBase
+public class SliderController :ApiController
 {
-    private readonly ApplicationDbContext _dbContext;
-
-    // DbContext'i constructor ile alıyoruz
-    public SliderController(ApplicationDbContext dbContext)
+    public SliderController(IMediator mediator) : base(mediator)
     {
-        _dbContext = dbContext;
     }
 
-    // POST: api/slider/create
-    [HttpPost("create")]
-    public async Task<IActionResult> CreateSlider([FromBody] Slider slider)
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateSliderCommand request, CancellationToken cancellationToken)
     {
-        if (slider == null)
-        {
-            return BadRequest("Slider verileri eksik.");
-        }
-
-        // Slider'ı oluşturuyoruz ve veritabanına ekliyoruz
-        slider.SliderId = Guid.NewGuid(); // Yeni bir Guid oluşturuyoruz
-        slider.Created = DateTime.UtcNow; // Oluşturulma tarihi
-        slider.CreatedBy = "System"; // Kim tarafından oluşturulduğunu belirtiyoruz
-        slider.Modified = DateTime.UtcNow; // İlk oluşturma zamanını da Modified olarak belirliyoruz
-
-        // Slider'ı veritabanına ekliyoruz
-        await _dbContext.Sliders.AddAsync(slider);
-
-        // Değişiklikleri kaydediyoruz
-        await _dbContext.SaveChangesAsync();
-
-        // Başarılı bir şekilde eklediğimiz SliderId'yi döndürüyoruz
-        return Ok(new { SliderId = slider.SliderId });
+        var response = await _mediator.Send(request, cancellationToken);
+        return StatusCode(response.StatusCode, response);
     }
+
 }

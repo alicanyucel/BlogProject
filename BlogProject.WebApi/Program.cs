@@ -2,6 +2,7 @@ using BlogProject.Application;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using BlogProject.Infrastructure;
+using BlogProject.WebApi.MiddleWare;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(opt =>
@@ -58,5 +59,5 @@ app.UseCors();
 app.UseExceptionHandler();
 
 app.MapControllers();
-
+ExceptionMiddleWare.CreateFirstUser(app);
 app.Run();
