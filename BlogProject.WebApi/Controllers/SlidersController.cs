@@ -28,13 +28,13 @@ public class SliderController :ApiController
         return Ok(response);
     }
     [HttpPost]
-    public async Task<IActionResult> DeleteSliderByIdCommandHandler(DeleteSliderByIdCommand request, CancellationToken cancellationToken)
+    public async Task<IActionResult> DeleteSliderById(DeleteSliderByIdCommand request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
     }
     [HttpPost]
-    public async Task<IActionResult> UpdateSliderByIdCommandHandler(UpdateSliderByIdCommand request, CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateSliderById(UpdateSliderByIdCommand request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
