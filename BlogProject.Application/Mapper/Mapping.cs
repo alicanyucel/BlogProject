@@ -2,6 +2,7 @@
 
 using AutoMapper;
 using BlogProject.Application.Features.Slider.CreateSlider;
+using BlogProject.Application.Features.Slider.UpdateSlider;
 using BlogProject.Domain;
 
 namespace BlogProject.Application.Mapper
@@ -11,6 +12,7 @@ namespace BlogProject.Application.Mapper
         public Mapping()
         {
             CreateMap<CreateSliderCommand, Slider>().ReverseMap();
+            CreateMap<UpdateSliderByIdCommand, Slider>().ReverseMap();
         }
     }
 }
